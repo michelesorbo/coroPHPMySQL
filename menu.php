@@ -6,8 +6,10 @@
 
     <ul class="nav nav-pills">
     <li class="nav-item"><a href="dashboard.php" class="nav-link" aria-current="page">Home</a></li>
-    <li class="nav-item"><a href="ins_studente.php" class="nav-link">Inserisci nuovo studente</a></li>
+    <li class="nav-item"><a href="ins_studente.php" class="nav-link">Nuovo Studente</a></li>
     <li class="nav-item"><a href="lista_studenti.php" class="nav-link">Lista Studenti</a></li>
+    <li class="nav-item"><a href="ins_corso.php" class="nav-link">Nuovo Corso</a></li>
+    <li class="nav-item"><a href="lista_corsi.php" class="nav-link">Lista Corsi</a></li>
     <li class="nav-item"><a href="log_out.php" class="nav-link">Esci</a></li>
     </ul>
 </header>
