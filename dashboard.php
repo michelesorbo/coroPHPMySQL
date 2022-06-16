@@ -3,7 +3,8 @@ session_start();
 if($_SESSION['logged'] == FALSE){
     header("Location: sign_in.php");
 }
-include('config/con_db.php');
+include('config/con_db.php'); //Creo la connessione al DB
+include('config/funzioni.php'); //Connetto le funzioni 
 ?>
 <!doctype html>
 <html lang="it">
@@ -15,41 +16,16 @@ include('config/con_db.php');
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Lista Studenti</title>
+    <title>Dashboard</title>
   </head>
   <body>
     <div class="container">
-    <?php include('menu.php'); ?>
-    <h1>Elenco Studenti</h1>
-
-    <table class="table table-striped">
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Codice Fiscale</th>
-            <th>Data di Nascita</th>
-            <th>Mail</th>
-            <th>Opzioni</th>
-        </tr>
-        <?php
-            $sql = "SELECT nome,cognome,cf,data_nascita,email FROM studenti";
-            $result = $db_conn->query($sql);
-
-            while($row = $result->fetch_assoc()){
-                echo "<tr>";
-                echo "<td>".ucfirst($row['nome'])."</td>";
-                echo "<td>".ucfirst($row['cognome'])."</td>";
-                echo "<td>".$row['cf']."</td>";
-                //Trasformo la data in formato italiano
-                $timestamp = strtotime($row['data_nascita']);
-                echo "<td>".date('d/m/Y', $timestamp)."</td>";
-                echo "<td>".$row['email']."</td>";
-                echo "<td><a href='invia_mail.php?mail=".$row['email']."'><img src='config/img/email_icon.png' width='28px'></a></td>";
-                echo "</tr>";
-            }
-
-        ?>
-    </table>
+    <?php include('menu.php'); //Richiamo il menù?>
+    <h1>Dashboard</h1>
+    <!-- INSERISCI IL CONTENUTO DELLA PAGINA QUI -->
+    <?php
+    echo "Benvenuto ".ucfirst($_SESSION['user_nome'])." ".ucfirst($_SESSION['user_cognome']);
+    ?>
     
 
     <!-- Optional JavaScript; choose one of the two! -->

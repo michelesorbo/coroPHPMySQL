@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['logged'] == FALSE){
+    header("Location: sign_in.php");
+}
 include('config/con_db.php');
 ?>
 <!doctype html>

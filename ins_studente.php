@@ -1,3 +1,9 @@
+<?php
+session_start();
+if($_SESSION['logged'] == FALSE){
+    header("Location: sign_in.php");
+}
+?>
 <!doctype html>
 <html lang="it">
   <head>

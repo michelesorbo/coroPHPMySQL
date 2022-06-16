@@ -79,9 +79,15 @@
 
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
-            if($row['mail'] == $_POST['mail'] && $row['pwd'] == md5($_POST['pwd']))
-                echo "Benvenuto";
-            else
+            if($row['mail'] == $_POST['mail'] && $row['pwd'] == md5($_POST['pwd'])){
+                session_start();
+                $_SESSION['logged'] = TRUE;
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['user_nome'] = $row['nome'];
+                $_SESSION['user_cognome'] = $row['cognome'];
+                $_SESSION['mail'] = $row['mail'];
+                header("Location: dashboard.php");
+            }else
                 echo "Mail o password errati";
         }else{
             echo "Mail non presente chiedi di registrarti";
