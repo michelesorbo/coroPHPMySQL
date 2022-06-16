@@ -46,16 +46,14 @@ include('config/con_db.php');
                 $timestamp_fine = strtotime($row['data_fine']);
                 echo "<td>".date('d/m/Y', $timestamp_fine)."</td>";
                 
-                echo "<td>Completato</td>";
-                /*
-                $today = strtotime(date('Y-m-d'));
+                $today = date('Y-m-d');
 
-                if($timestamp_fine < $today){
-                    echo "<td>Completato</td>";
+                if($row['data_fine'] <= $today){
+                    echo "<td><span class='badge bg-success'>Completato</spam></td>";
                 }else{
-                    echo "In Corso";
+                    echo "<td><span class='badge bg-info text-dark'>In Corso</spam></td>";
                 }
-                */
+                
 
 
                 echo "<td><a href='#'><img src='config/img/email_icon.png' width='28px'></a></td>";
