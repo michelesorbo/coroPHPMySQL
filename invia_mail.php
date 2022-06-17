@@ -46,6 +46,12 @@ include('config/funzioni.php'); //Connetto le funzioni
     
     <?php
     if(isset($_POST['invio'])){
+      $sql = "SELECT nome, cognome FROM studenti WHERE email = '".$_POST['destinatario']."'";
+      $result = $db_conn->query($sql);
+      
+      while($row = $result->fetch_assoc()){
+        echo "<td>".$row['nome'].$row['cognome']."</td>";
+      }
       /*
       echo "<br>".$_POST['destinatario'];
       echo "<br>".$_POST['oggetto'];
