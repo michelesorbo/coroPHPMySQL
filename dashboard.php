@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['logged'] == FALSE){
+if(!$_SESSION['logged'] == $_COOKIE['logged']){
     header("Location: sign_in.php");
 }
 include('config/con_db.php'); //Creo la connessione al DB
@@ -25,6 +25,7 @@ include('config/funzioni.php'); //Connetto le funzioni
     <!-- INSERISCI IL CONTENUTO DELLA PAGINA QUI -->
     <?php
     echo "Benvenuto ".ucfirst($_SESSION['user_nome'])." ".ucfirst($_SESSION['user_cognome']);
+    echo "<br>".$_COOKIE['logged'];    
     ?>
     
 

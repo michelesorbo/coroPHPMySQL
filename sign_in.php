@@ -62,6 +62,12 @@
       <label for="floatingPassword">Password</label>
     </div>
 
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
@@ -80,6 +86,9 @@
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             if($row['mail'] == $_POST['mail'] && $row['pwd'] == md5($_POST['pwd'])){
+                setcookie("logged",TRUE,time()+60*60);
+                //setcookie("user",$_POST['mail'],time()+60);
+                //setcookie("password",$_POST['pwd'],time()+60);
                 session_start();
                 $_SESSION['logged'] = TRUE;
                 $_SESSION['user_id'] = $row['id'];

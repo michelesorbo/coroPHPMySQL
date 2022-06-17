@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['logged'] == FALSE){
+if(!$_SESSION['logged'] == $_COOKIE['logged']){
     header("Location: sign_in.php");
 }
 ?>
